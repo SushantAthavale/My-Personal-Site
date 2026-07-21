@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caspro Metals — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="site-intro" id="siteIntro">
+  <div class="intro-image">
+    <img src="/static/images/brand-logo.png" alt="Caspro Metals logo">
+  </div>
+</div>
+
+<div class="screen">
+
+  <!-- LEFT: BRAND / RATES -->
+  <div class="brand-panel">
+    <div class="brand-image">
+      <img src="/static/images/brand-logo.png" alt="Caspro Metals logo image">
+    </div>
+  </div>
+
+  <!-- RIGHT: LOGIN FORM -->
+  <div class="form-panel">
+    <div class="form-wrap">
+      <h1 class="form-title"><strong>CASPRO METALS PVT. LTD.</strong></h1>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="userId">User ID or email</label>
+          <div class="field-input">
+            <input type="text" id="userId" name="userId" placeholder="e.g. CM-0142 or name@caspro.in" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="field-input">
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+            <button type="button" class="toggle-visibility" id="toggleBtn" aria-label="Show password"><span class="eye-icon" aria-hidden="true"></span></button>
+          </div>
+          <div class="error-text" id="errorText"></div>
+        </div>
+
+        <div class="row-between">
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            Keep me signed in
+          </label>
+          <a href="#" class="forgot">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-signin">
+          Sign in <span class="arrow">→</span>
+        </button>
+      </form>
+
+      <div class="divider">or</div>
+
+      <p class="contact-line">New User? <a href="#">Contact the office</a> for access.</p>
+
+      <p class="foot-note">Caspro Metals Pvt. Ltd. ·Kolhapur, Maharashtra<br>For account issues, reach IT support.</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
