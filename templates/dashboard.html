@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --graphite: #1b1e22;
+            --paper: #f3f1ec;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            transition: background-color 0.5s ease;
+        }
+        body.welcoming {
+            background-color: var(--paper);
+            overflow: hidden;
+        }
+        .welcome-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--paper);
+            z-index: 100;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .welcome-container {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInOut 4s ease-in-out 0.5s forwards;
+        }
+        .welcome-title {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 800; /* Bold format */
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--graphite);
+            margin: 0;
+
+            /* Create a gradient text effect that matches the brand's copper tones */
+            background: linear-gradient(45deg, #2c3035, #4a5057); /* Industrial, metallic-like gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 0 2px 25px rgba(201, 29, 29, 0.3); /* Darker shadow for contrast */
+        }
+        .welcome-subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 0rem;
+            color: #db180aca;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.95); }
+            25% { opacity: 1; transform: scale(1); }
+            75% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.05); }
+        }
+        .dashboard-content {
+            padding: 2rem;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        body.dashboard-visible .dashboard-content {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="welcoming">
+    <div class="welcome-overlay">
+        <div class="welcome-container">
+            <h2 class="welcome-title">Welcome</h2>
+            <p class="welcome-subtitle">to Caspro Metals Pvt. Ltd. · Kolhapur</p>
+        </div>
+    </div>
+    <div class="dashboard-content">
+        <h1>Dashboard</h1>
+        <p>Signed in successfully. This is a static page for demonstration purposes.</p>
+        <br>
+        <a href="/">← Back to Login</a>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            const totalAnimationTime = 4500;
+            setTimeout(() => {
+                document.body.classList.remove('welcoming');
+                document.body.classList.add('dashboard-visible');
+                const overlay = document.querySelector('.welcome-overlay');
+                if (overlay) {
+                    overlay.style.transition = 'opacity 0.5s ease';
+                    overlay.style.opacity = '0';
+                    overlay.addEventListener('transitionend', () => overlay.remove());
+                }
+            }, totalAnimationTime);
+        });
+    </script>
+</body>
+</html>

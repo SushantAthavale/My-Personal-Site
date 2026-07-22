@@ -31,7 +31,7 @@ toggleBtn.addEventListener('click', () => {
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const userId = document.getElementById('userId').value.trim();
-  const password = passwordInput.value;
+  const password = passwordInput.value.trim();
   const btn = form.querySelector('.btn-signin');
 
   if (!userId || !password) {
@@ -50,21 +50,40 @@ form.addEventListener('submit', async (event) => {
   const originalText = btn.innerHTML;
   btn.innerHTML = 'Checking…';
   btn.disabled = true;
-  
-  // NOTE FOR GITHUB PAGES DEPLOYMENT:
-  // GitHub Pages is for static sites and cannot run the Python backend.
-  // The original 'fetch' call to '/login' has been replaced with a simple
-  // redirect to a static 'dashboard.html' page to simulate a successful login.
-  
-  errorText.style.color = 'var(--green)';
-  errorText.textContent = 'Login successful. Redirecting…';
-  
-  // Simulate a short delay and then redirect.
-  setTimeout(() => {
-    window.location.href = 'dashboard.html';
-  }, 800);
-  
-  // Since we are redirecting, we don't need to re-enable the button.
+
+  try {
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        userId,
+        password,
+        remember: document.getElementById('remember').checked ? 'on' : 'off',
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      errorText.style.color = 'var(--green)';
+      errorText.textContent = result.message || 'Login successful. Redirecting…';
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 800);
+    } else {
+      errorText.style.color = 'var(--red)';
+      errorText.textContent = result.error || 'Unable to sign in. Please try again.';
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }
+  } catch (error) {
+    errorText.style.color = 'var(--red)';
+    errorText.textContent = 'Server error. Try again after a moment.';
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
 });
 
 setInterval(() => {

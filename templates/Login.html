@@ -6,13 +6,13 @@
 <title>Caspro Metals — Sign in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
 <div class="site-intro" id="siteIntro">
   <div class="intro-image">
-    <img src="static/images/brand-logo.png" alt="Caspro Metals logo">
+    <img src="{{ url_for('static', filename='images/brand-logo.png') }}" alt="Caspro Metals logo">
   </div>
 </div>
 
@@ -21,7 +21,7 @@
   <!-- LEFT: BRAND / RATES -->
   <div class="brand-panel">
     <div class="brand-image">
-      <img src="static/images/brand-logo.png" alt="Caspro Metals logo image">
+      <img src="{{ url_for('static', filename='images/brand-logo.png') }}" alt="Caspro Metals logo image">
     </div>
   </div>
 
@@ -70,6 +70,6 @@
 
 </div>
 
-<script src="static/js/script.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

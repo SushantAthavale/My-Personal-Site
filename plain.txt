@@ -1,0 +1,10 @@
+PROJECT/
+├── app.py
+├── init_db.py
+├── CMI.db
+├── static/
+│   └── ...
+└── templates/
+    ├── Login.html
+    ├── welcome.html
+    └── dashboard.html
