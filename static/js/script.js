@@ -2,7 +2,6 @@ const toggleBtn = document.getElementById('toggleBtn');
 const passwordInput = document.getElementById('password');
 const form = document.getElementById('loginForm');
 const errorText = document.getElementById('errorText');
-const rateEls = document.querySelectorAll('.rate-val');
 const introOverlay = document.getElementById('siteIntro');
 
 window.addEventListener('load', () => {
@@ -36,7 +35,7 @@ form.addEventListener('submit', async (event) => {
 
   if (!userId || !password) {
     errorText.style.color = 'var(--red)';
-    errorText.textContent = 'Enter both your user ID and password to continue.';
+    errorText.textContent = 'Enter both your email and password to continue.';
     return;
   }
 
@@ -64,20 +63,32 @@ form.addEventListener('submit', async (event) => {
       }),
     });
 
-    const result = await response.json();
-
-    if (result.success) {
-      errorText.style.color = 'var(--green)';
-      errorText.textContent = result.message || 'Login successful. Redirecting…';
-      setTimeout(() => {
-        window.location.href = '/dashboard';
-      }, 800);
-    } else {
-      errorText.style.color = 'var(--red)';
-      errorText.textContent = result.error || 'Unable to sign in. Please try again.';
-      btn.innerHTML = originalText;
-      btn.disabled = false;
+    // If login is successful, the server redirects. `response.redirected` will be true.
+    if (response.redirected) {
+      window.location.href = response.url; // Follow the redirect to the dashboard
+      return;
     }
+
+    // If there was no redirect, it means login failed and we got a JSON error.
+    if (!response.ok) {
+      try {
+        const result = await response.json();
+        errorText.style.color = 'var(--red)';
+        errorText.textContent = result.error || 'Unable to sign in. Please try again.';
+      } catch (e) {
+        // This can happen if the server returns a non-JSON error (e.g., an HTML error page).
+        // This is a more specific error message that helps with debugging.
+        errorText.style.color = 'var(--red)';
+        errorText.textContent = 'An unexpected server response was received.';
+        // Log the actual response for debugging.
+        console.error('Login failed. The server response was not valid JSON.');
+        response.text().then(text => console.error('Server response body:', text));
+      }
+    }
+
+    // Reset button state on failure
+    btn.innerHTML = originalText;
+    btn.disabled = false;
   } catch (error) {
     errorText.style.color = 'var(--red)';
     errorText.textContent = 'Server error. Try again after a moment.';
@@ -85,14 +96,3 @@ form.addEventListener('submit', async (event) => {
     btn.disabled = false;
   }
 });
-
-setInterval(() => {
-  rateEls.forEach(el => {
-    const base = parseFloat(el.dataset.base);
-    const wiggle = base * (Math.random() * 0.006 - 0.003);
-    const value = Math.round(base + wiggle);
-    el.style.color = '#e08540';
-    el.textContent = '₹' + value.toLocaleString('en-IN');
-    setTimeout(() => { el.style.color = ''; }, 400);
-  });
-}, 3500);

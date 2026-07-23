@@ -64,7 +64,7 @@ body.intro-complete .form-panel{
   overflow: hidden;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 3.35s ease, visibility 1.35s ease;
   will-change: opacity, visibility;
 }
 
@@ -74,33 +74,49 @@ body.intro-complete .form-panel{
   pointer-events: none;
 }
 
-.intro-image{
-  width: min(420px, 72vw);
-  max-width: 100%;
-  animation: intro-slide 0.45s ease 0s both;
+.intro-welcome{
+  text-align: center;
+  animation: intro-slide 1.35s cubic-bezier(0.22, 1, 0.36, 1) both;
   will-change: opacity, filter;
 }
 
-.intro-image img{
-  width: 100%;
-  height: auto;
+.intro-welcome span{
   display: block;
-  border-radius: 1rem;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  color: var(--graphite);
+}
+
+.intro-welcome p{
+  margin-top: 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--copper);
 }
 
 @keyframes intro-slide{
   0%{
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(14px);
+  }
+  28%{
     opacity: 1;
     filter: blur(0);
+    transform: translateY(0);
   }
   80%{
     opacity: 1;
     filter: blur(0);
+    transform: translateY(0);
   }
   100%{
     opacity: 0;
     filter: blur(0.8px);
+    transform: translateY(-6px);
   }
 }
 
@@ -233,24 +249,62 @@ body.intro-complete .site-intro{
   color: var(--steel-light);
 }
 
-/* ---------- RATE TICKER (signature element) ---------- */
-.brand-image{
+/* ---------- WELCOME WORDMARK ---------- */
+.brand-welcome{
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  width: min(100%, 34rem);
+  padding: 1rem;
+  animation: welcome-reveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.58s both;
 }
 
-.brand-image img{
-  width: auto;
-  max-width: 100%;
-  max-height: 80vh;
+@keyframes welcome-reveal{
+  from{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-kicker{
+  margin-bottom: 1.15rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  color: var(--copper-bright);
+}
+
+.brand-welcome h2{
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(3.6rem, 8vw, 7.8rem);
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+  color: var(--paper);
+}
+
+.brand-welcome h2 em{
+  color: var(--copper-bright);
+  font-style: normal;
+}
+
+.welcome-copy{
+  max-width: 25ch;
+  margin-top: 2rem;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--steel-light);
+}
+
+.welcome-line{
   display: block;
-  border-radius: 1rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-  object-fit: contain;
+  width: 4rem;
+  height: 2px;
+  margin-top: 2.2rem;
+  background: var(--copper);
 }
 
 /* ---------- RIGHT PANEL ---------- */
@@ -491,5 +545,6 @@ body.intro-complete .site-intro{
 
 @media (prefers-reduced-motion: reduce){
   .pulse-dot{ animation: none; }
+  .intro-welcome, .brand-welcome{ animation: none; }
   .btn-signin, .btn-signin .arrow{ transition: none; }
 }

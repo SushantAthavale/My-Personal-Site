@@ -2,13 +2,13 @@ import sqlite3
 from werkzeug.security import generate_password_hash
 import os
 
-DB_FILE = 'CMI.db'
+DB_FILE = 'app.db'
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(SCRIPT_DIR, DB_FILE)
 
 # --- Safety Check ---
 # To prevent accidentally overwriting the database, check if it exists.
-# If you need to reset the database, manually delete 'CMI.db' and rerun this script.
+# If you need to reset the database, manually delete 'app.db' and rerun this script.
 if os.path.exists(DB_PATH):
     print(f"Database file '{DB_PATH}' already exists. Aborting initialization.")
     print("If you want to re-create the database, please delete the file and run this script again.")
@@ -32,8 +32,8 @@ with sqlite3.connect(DB_PATH) as connection:
 
     # --- User Data ---
     users_to_add = {
-        'admin': 'CMI-Admin@0962',
-        'user@caspro.in': 'demo1234',
+        'admin': 'admin1234',
+        'user@example.com': 'demo1234',
     }
 
     for username, password in users_to_add.items():

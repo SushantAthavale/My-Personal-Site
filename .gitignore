@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.db-journal
+*.sqbpro
+
+# Local development database; the application uses the tracked CMI.db file.
+app.db

@@ -1,0 +1,125 @@
+:root {
+    /* Using colors from style.css for brand consistency */
+    --background-color: #f3f1ec;      /* --paper */
+    --container-bg: #ffffff;
+    --primary-text: #1b1e22;          /* --ink */
+    --secondary-text: #5b6169;        /* A slightly darker gray for better readability */
+    --border-color: #e7e4dc;          /* --paper-dim */
+    --accent-color: #1b1e22;          /* --graphite */
+    --accent-hover: #000000;
+    --brand-accent: #c4692e;          /* --copper */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--container-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--brand-accent);
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-menu span {
+    font-weight: 500;
+}
+
+.logout-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+    background-color: var(--accent-hover);
+}
+
+.logout-button:focus-visible {
+    outline: 2px solid var(--brand-accent);
+    outline-offset: 2px;
+}
+
+.dashboard-main {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-main h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-main p {
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+}
+
+.widget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.widget {
+    background-color: var(--container-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.widget h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.widget p {
+    color: var(--secondary-text);
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+.widget:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.07);
+}

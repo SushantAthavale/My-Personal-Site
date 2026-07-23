@@ -1,4 +1,4 @@
-# Caspro Metals Login Page
+# AW Universal Login Page
 
 A simple Flask-based login page with a polished landing experience.
 
@@ -10,7 +10,7 @@ A simple Flask-based login page with a polished landing experience.
     ```
 
 2.  **Initialize the database:**
-    This command creates the `CMI.db` file and populates it with initial users. You only need to run this once.
+    This command creates the `app.db` file and populates it with initial users. You only need to run this once.
     ```bash
     python init_db.py
     ```

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caspro Metals — Sign in</title>
+<title>My Personal Site - Sign in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -11,8 +11,9 @@
 <body>
 
 <div class="site-intro" id="siteIntro">
-  <div class="intro-image">
-    <img src="{{ url_for('static', filename='images/brand-logo.png') }}" alt="Caspro Metals logo">
+  <div class="intro-welcome" aria-label="Welcome to My Personal Site">
+    <span>WELCOME</span>
+    <p>MY PERSONAL SITE</p>
   </div>
 </div>
 
@@ -20,21 +21,24 @@
 
   <!-- LEFT: BRAND / RATES -->
   <div class="brand-panel">
-    <div class="brand-image">
-      <img src="{{ url_for('static', filename='images/brand-logo.png') }}" alt="Caspro Metals logo image">
+    <div class="brand-welcome">
+      <p class="welcome-kicker">WELCOME TO</p>
+      <h2>My <em>Personal</em><br>Site.</h2>
+      <p class="welcome-copy">A Private, Simple Space Made Just for Me.</p>
+      <span class="welcome-line" aria-hidden="true"></span>
     </div>
   </div>
 
   <!-- RIGHT: LOGIN FORM -->
   <div class="form-panel">
     <div class="form-wrap">
-      <h1 class="form-title"><strong>CASPRO METALS PVT. LTD.</strong></h1>
+      <h1 class="form-title"><strong></strong></h1>
 
       <form id="loginForm" novalidate>
         <div class="field">
           <label for="userId">User ID or email</label>
           <div class="field-input">
-            <input type="text" id="userId" name="userId" placeholder="e.g. CM-0142 or name@caspro.in" autocomplete="username" required>
+            <input type="text" id="userId" name="userId" placeholder="e.g. yourname@example.com" autocomplete="username" required>
           </div>
         </div>
 
@@ -62,9 +66,9 @@
 
       <div class="divider">or</div>
 
-      <p class="contact-line">New User? <a href="#">Contact the office</a> for access.</p>
+      <p class="contact-line">Need access? <a href="#">Contact the site owner</a>.</p>
 
-      <p class="foot-note">Caspro Metals Pvt. Ltd. ·Kolhapur, Maharashtra<br>For account issues, reach IT support.</p>
+      <p class="foot-note">My Personal Site<br>For account issues, contact the site owner.</p>
     </div>
   </div>
 
