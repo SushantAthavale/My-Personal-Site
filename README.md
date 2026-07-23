@@ -1,23 +1,21 @@
-# AW Universal Login Page
+# My Personal Site
 
-A simple Flask-based login page with a polished landing experience.
+A private Flask-based personal site with a polished login experience and personal dashboard.
 
 ## Run locally
 
-1.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. Install dependencies:
 
-2.  **Initialize the database:**
-    This command creates the `app.db` file and populates it with initial users. You only need to run this once.
-    ```bash
-    python init_db.py
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-3.  **Run the application:**
-    ```bash
-    python app.py
-    ```
+2. Start the application:
 
-Then open http://127.0.0.1:5000/
+   ```bash
+   python app.py
+   ```
+
+3. Open http://127.0.0.1:5000/ in your browser.
+
+The application uses the included `CMI.db` SQLite database for login accounts.
